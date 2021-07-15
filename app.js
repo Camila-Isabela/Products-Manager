@@ -23,19 +23,19 @@ app.engine('hbs', exphbs( {extname: '.hbs' } ));
 app.set('view engine', 'hbs');
 
 //Ponte de conexão 
-// const pool = mysql.createPool({
-//     connectionLimit : 100,
-//     host            : process.env.DB_HOST,
-//     user            : process.env.DB_USER,
-//     password        : process.env.DB_PASS,
-//     database        : process.env.DB_NAME
-// });
+const pool = mysql.createPool({
+    connectionLimit : 100,
+    host            : process.env.DB_HOST,
+    user            : process.env.DB_USER,
+    password        : process.env.DB_PASS,
+    database        : process.env.DB_NAME
+});
 
 //Conexão com o banco de dados
-// pool.getConnection((err, connection) => {
-//     if(err) throw err; //Sem conexão!!
-//     console.log('Conexão com o ID ' + connection.threadId);
-// });
+pool.getConnection((err, connection) => {
+    if(err) throw err; //Sem conexão!!
+    console.log('Conexão com o ID ' + connection.threadId);
+});
 
 
 //Router
@@ -43,12 +43,12 @@ app.set('view engine', 'hbs');
 //Dentro da pasta "server" vem "routes" e "controllers". é lá que ficam meus dados
 //excluindo...
 
-app.get('', (req, res) => {
-    res.render('home');
-});
+// app.get('', (req, res) => {
+//     res.render('home');
+// });
 
 //Aqui são as novas rotas
-// const routes = require('./server/routes/produto');
-// app.use('/', routes);
+const routes = require('./server/routes/produto');
+app.use('/', routes);
 
 app.listen(port, () => console.log(`Rodando na porta ${port}`));
