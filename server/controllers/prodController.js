@@ -10,7 +10,7 @@ const pool = mysql.createPool({
 });
 
 //Exibir Produtos
-exports.view = (req, res) => {
+exports.exibir = (req, res) => {
     //Conexão com o banco de dados
     pool.getConnection((err, connection) => {
         if (err) throw err; //Sem conexão!!
@@ -22,6 +22,28 @@ exports.view = (req, res) => {
             connection.release();
             if (!err) {
                 res.render('home', { rows });
+            } else {
+                console.log(err);
+            }
+            console.log("Os dados da tabela produtos: \n", rows);
+        });
+    });
+};
+
+//Pesquisando produto
+exports.pesquisar = (req, res) => {
+    pool.getConnection((err, connection) => {
+        if (err) throw err; //Sem conexão!!
+        console.log("Conexão com o ID " + connection.threadId);
+        let searchTerm = req.body.search;
+        //Usando a conexão
+        connection.query("SELECT * FROM produtos WHERE cod_barra LIKE ? ",
+            ["%" + searchTerm + "%"], (err, rows) => {
+            connection.release();
+            if (!err) {
+                res.render("home", {
+                    rows,
+                });
             } else {
                 console.log(err);
             }
