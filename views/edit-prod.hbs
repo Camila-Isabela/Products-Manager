@@ -1,1 +1,11 @@
-<h2>Editando produto</h2>
+{{! Cabeçalho }}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Início</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Editando Produto</li>
+    </ol>
+</nav>
+
+<form action="/addprod" class="row g-3 needs-validation" method="post" novalidate>
+    {{> prod-form}}
+</form>
