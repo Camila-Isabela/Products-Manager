@@ -10,7 +10,7 @@ const pool = mysql.createPool({
 });
 
 //Exibir Produtos
-exports.exibir = (req, res) => {
+exports.view = (req, res) => {
     //Conexão com o banco de dados
     pool.getConnection((err, connection) => {
         if (err) throw err; //Sem conexão!!
@@ -31,7 +31,7 @@ exports.exibir = (req, res) => {
 };
 
 //Pesquisando produto
-exports.pesquisar = (req, res) => {
+exports.find = (req, res) => {
     pool.getConnection((err, connection) => {
         if (err) throw err; //Sem conexão!!
         console.log("Conexão com o ID " + connection.threadId);
@@ -41,9 +41,35 @@ exports.pesquisar = (req, res) => {
             ["%" + searchTerm + "%"], (err, rows) => {
             connection.release();
             if (!err) {
-                res.render("home", {
-                    rows,
-                });
+                res.render("home", { rows });
+            } else {
+                console.log(err);
+            }
+            console.log("Os dados da tabela produtos: \n", rows);
+        });
+    });
+};
+
+//Renderizando o formulário
+exports.form = (req, res) => {
+    res.render("add-prod");
+};
+
+//Adicionando produto
+exports.create = (req, res) => {
+
+    const { cod_barra, nome, fabricante, categoria, tipo, preco, qtd_estoque, peso, descricao} = req.body;
+
+    pool.getConnection((err, connection) => {
+        if (err) throw err; //Sem conexão!!
+        console.log("Conexão com o ID " + connection.threadId);
+        let searchTerm = req.body.search;
+        
+        connection.query("INSERT INTO produtos SET cod_barra = ?, nome = ?, fabricante = ?, categoria = ?, tipo = ?, preco = ?, qtd_estoque = ?, peso = ?, descricao = ?",
+            [cod_barra, nome, fabricante, categoria, tipo, preco, qtd_estoque, peso, descricao], (err, rows) => {
+            connection.release();
+            if (!err) {
+                res.render("add-prod", { alert: 'Produto adicionado com sucesso!!!' });
             } else {
                 console.log(err);
             }

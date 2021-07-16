@@ -1,0 +1,88 @@
+{{! Cabeçalho }}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Início</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Novo Produto</li>
+    </ol>
+</nav>
+
+{{!-- Alerta --}}
+{{#if alert}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{alert}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+<form action="/addprod" class="row g-3 needs-validation" method="post" novalidate>
+    
+    <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput" value="{{this.cod_barra}}" placeholder="Código de Barras" name="cod_barra" />
+            <label for="floatingInput">Código de Barras</label>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" value="{{this.nome}}" placeholder="Nome" name="nome" />
+            <label for="floatingInput">Nome</label>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" value="{{this.fabricante}}" placeholder="Fabricante" name="fabricante" />
+            <label for="floatingInput">Fabricante</label>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" value="{{this.categoria}}" placeholder="Categoria" name="categoria" />
+            <label for="floatingInput">Categoria</label>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" value="{{this.tipo}}" placeholder="Tipo" name="tipo" />
+            <label for="floatingInput">Tipo</label>
+        </div>
+    </div>
+        
+    <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput" value="{{this.preco}}" placeholder="Preço" name="preco" />
+            <label for="floatingInput">Preço</label>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput" value="{{this.qtd_estoque}}" placeholder="Quantidade" name="qtd_estoque" />
+            <label for="floatingInput">Quantidade</label>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput" value="{{this.peso}}" placeholder="Peso(gramas)" name="peso" />
+            <label for="floatingInput">Peso</label>
+        </div>
+    </div>
+
+
+    {{!-- A descrição não tem que ter o value dentro da tag ? Verificar depois!!! --}}
+    <div class="col-12">
+        <div class="form-floating mb-3">
+            <textarea class="form-control" placeholder="Descrição" name="descricao" style="height: 200px;">{{this.descricao}}</textarea>
+            <label for="floatingInput">Descrição</label>
+        </div>
+    </div>
+
+    <div class="col-12 d-grid">
+        <button class="btn btn-primary">Adicionar</button>
+    </div>
+
+</form>

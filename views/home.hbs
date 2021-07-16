@@ -11,7 +11,7 @@
 <table class="table table-bordered">
   <thead class="thead-dark">
     <tr>
-      {{!-- <th scope="col">ID</th> --}}
+      <th scope="col" hidden>ID</th>
       <th scope="col"><i class="bi bi-upc-scan"></i></th>
       <th scope="col">Nome</th>
       <th scope="col">Categoria</th>
@@ -24,7 +24,7 @@
 
     {{#each rows}}
     <tr>
-      {{!-- <th scope="row">{{this.id_produto}}</th> --}}
+      <th scope="row" hidden>{{this.id_produto}}</th>
       <th scope="row">{{this.cod_barra}}</th>
       <td>{{this.nome}}</td>
       <td>{{this.categoria}}</td>

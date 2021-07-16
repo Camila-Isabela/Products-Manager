@@ -6,16 +6,16 @@ const prodController = require('../controllers/prodController');
 //Create, Remove, Update, Delete o famoso CRUD!
 
 //Exibir
-router.get('/', prodController.exibir);
+router.get('/', prodController.view);
 
 // //Pesquisar
-router.post('/', prodController.pesquisar);
+router.post('/', prodController.find);
 
-// //Adicionar
-// router.get('/addprod', prodController.form);
+//Pegar para adicionar
+router.get('/addprod', prodController.form);
 
-// //Enviar
-// router.post('/addprod', prodController.create);
+//Adicionar
+router.post('/addprod', prodController.create);
 
 // //Editar
 // router.get('/editprod/:id', prodController.edit);
