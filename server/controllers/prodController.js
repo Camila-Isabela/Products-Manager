@@ -81,5 +81,19 @@ exports.create = (req, res) => {
 //Editando produto
 exports.edit = (req, res) => {
 
-    res.render('edit-prod');
+        pool.getConnection((err, connection) => {
+        if (err) throw err; //Sem conexão!!
+        console.log("Conexão com o ID " + connection.threadId);
+        
+        connection.query('SELECT * FROM produtos WHERE id_produto = ?', [req.params.id], (err, rows) => {
+           
+            connection.release();
+            if (!err) {
+                res.render('edit-prod', { rows });
+            } else {
+                console.log(err);
+            }
+            console.log("Os dados da tabela produtos: \n", rows);
+        });
+    });
 };
