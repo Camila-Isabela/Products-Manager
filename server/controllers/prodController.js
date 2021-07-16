@@ -77,3 +77,9 @@ exports.create = (req, res) => {
         });
     });
 };
+
+//Editando produto
+exports.edit = (req, res) => {
+
+    res.render('edit-prod');
+};

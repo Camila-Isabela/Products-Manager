@@ -18,7 +18,7 @@ router.get('/addprod', prodController.form);
 router.post('/addprod', prodController.create);
 
 // //Editar
-// router.get('/editprod/:id', prodController.edit);
+router.get('/editprod/:id', prodController.edit);
 
 // //Atualizar
 // router.post('/editprod/:id', prodController.update);
