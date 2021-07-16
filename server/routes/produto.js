@@ -21,6 +21,6 @@ router.post('/addprod', prodController.create);
 router.get('/editprod/:id', prodController.edit);
 
 // //Atualizar
-// router.post('/editprod/:id', prodController.update);
+router.post('/editprod/:id', prodController.update);
 
 module.exports = router;

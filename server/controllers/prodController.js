@@ -85,7 +85,7 @@ exports.edit = (req, res) => {
         if (err) throw err; //Sem conexão!!
         console.log("Conexão com o ID " + connection.threadId);
         
-        connection.query('SELECT * FROM produtos WHERE id_produto = ?', [req.params.id], (err, rows) => {
+        connection.query('SELECT * FROM produtos WHERE id = ?', [req.params.id], (err, rows) => {
            
             connection.release();
             if (!err) {
@@ -97,3 +97,44 @@ exports.edit = (req, res) => {
         });
     });
 };
+
+//Atualizando produto
+exports.update = (req, res) => {
+
+        const { cod_barra, nome, fabricante, categoria, tipo, preco, qtd_estoque, peso, descricao} = req.body;
+
+        pool.getConnection((err, connection) => {
+        if (err) throw err; //Sem conexão!!
+        console.log("Conexão com o ID " + connection.threadId);
+        
+        connection.query('UPDATE produtos SET cod_barra = ?, nome = ?, fabricante = ?, categoria = ?, tipo = ?, preco = ?, qtd_estoque = ?, peso = ?, descricao = ? WHERE id = ?', [cod_barra, nome, fabricante, categoria, tipo, preco, qtd_estoque, peso, descricao, req.params.id], (err, rows) => {
+            
+            connection.release();
+            if (!err) {
+
+
+                pool.getConnection((err, connection) => {
+                    if (err) throw err; //Sem conexão!!
+                    console.log("Conexão com o ID " + connection.threadId);
+                    
+                    connection.query('SELECT * FROM produtos WHERE id = ?', [req.params.id], (err, rows) => {
+                       
+                        connection.release();
+                        if (!err) {
+                            res.render("edit-prod", { rows, alert: 'Produto atualizado!!!' });
+                        } else {
+                            console.log(err);
+                        }
+                        console.log("Os dados da tabela produtos: \n", rows);
+                    });
+                });
+
+
+            } else {
+                console.log(err);
+            }
+            console.log("Os dados da tabela produtos: \n", rows);
+        });
+    });
+};
+

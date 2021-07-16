@@ -24,7 +24,7 @@
 
     {{#each rows}}
     <tr>
-      <th scope="row" hidden>{{this.id_produto}}</th>
+      <th scope="row" hidden>{{this.id}}</th>
       <th scope="row">{{this.cod_barra}}</th>
       <td>{{this.nome}}</td>
       <td>{{this.categoria}}</td>
@@ -32,7 +32,7 @@
       <td>{{this.qtd_estoque}}</td>
       <td class="text-center">
           <a href="#" type="button" class="btn btn-light btn-sm"> <i class="bi bi-eye"></i> Exibir</a>
-          <a href="/editprod/{{this.id_produto}}" type="button" class="btn btn-light btn-sm"><i class="bi bi-pencil-square"></i> Editar</a>
+          <a href="/editprod/{{this.id}}" type="button" class="btn btn-light btn-sm"><i class="bi bi-pencil-square"></i> Editar</a>
           <a href="#" type="button" class="btn btn-light btn-sm"> <i class="bi bi-x-square"></i> Excluir</a>
      </td>
     </tr>

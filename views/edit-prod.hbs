@@ -6,12 +6,17 @@
     </ol>
 </nav>
 
-<form action="/addprod" class="row g-3 needs-validation" method="post" novalidate>
-{{#each rows}}
-    {{> prod-form}}
-{{/each}}
-</form>
-
-<div class="col-12 d-grid">
-    <button class="btn btn-primary">Editar</button>
+{{!-- Alerta --}}
+{{#if alert}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{alert}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
+{{/if}}
+
+{{#each rows}}
+<form action="/editprod/{{this.id}}" class="row g-3 needs-validation" method="post" novalidate>
+    {{> prod-form}}
+</form>
+{{/each}}
+
