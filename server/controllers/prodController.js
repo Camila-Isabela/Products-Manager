@@ -140,20 +140,37 @@ exports.update = (req, res) => {
 //Excluindo produto
 exports.delete = (req, res) => {
 
-    pool.getConnection((err, connection) => {
-    if (err) throw err; //Sem conexão!!
-    console.log("Conexão com o ID " + connection.threadId);
-    
-    connection.query('DELETE FROM produtos WHERE id = ?', [req.params.id], (err, rows) => {
-       
-        connection.release();
-        if (!err) {
-            res.redirect('/');
-        } else {
-            console.log(err);
-        }
-        console.log("Os dados da tabela produtos: \n", rows);
+    //     pool.getConnection((err, connection) => {
+    //     if (err) throw err; //Sem conexão!!
+    //     console.log("Conexão com o ID " + connection.threadId);
+        
+    //     connection.query('DELETE FROM produtos WHERE id = ?', [req.params.id], (err, rows) => {
+        
+    //         connection.release();
+    //         if (!err) {
+    //             res.redirect('/');
+    //         } else {
+    //             console.log(err);
+    //         }
+    //         console.log("Os dados da tabela produtos: \n", rows);
+    //     });
+    // });
+
+        pool.getConnection((err, connection) => {
+        if (err) throw err; //Sem conexão!!
+        console.log("Conexão com o ID " + connection.threadId);
+        
+        connection.query('UPDATE produtos SET status = ? WHERE id = ?', ['inativo',req.params.id], (err, rows) => {
+        
+            connection.release();
+            if (!err) {
+                res.redirect('/');
+            } else {
+                console.log(err);
+            }
+            console.log("Os dados da tabela produtos: \n", rows);
+        });
     });
-});
+
 };
 
