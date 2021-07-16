@@ -8,7 +8,7 @@ const prodController = require('../controllers/prodController');
 //Exibir
 router.get('/', prodController.view);
 
-// //Pesquisar
+//Pesquisar
 router.post('/', prodController.find);
 
 //Pegar para adicionar
@@ -17,10 +17,13 @@ router.get('/addprod', prodController.form);
 //Adicionar
 router.post('/addprod', prodController.create);
 
-// //Editar
+//Editar
 router.get('/editprod/:id', prodController.edit);
 
-// //Atualizar
+///Atualizar
 router.post('/editprod/:id', prodController.update);
+
+//Excluir
+router.get('/:id', prodController.delete);
 
 module.exports = router;

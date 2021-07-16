@@ -112,7 +112,6 @@ exports.update = (req, res) => {
             connection.release();
             if (!err) {
 
-
                 pool.getConnection((err, connection) => {
                     if (err) throw err; //Sem conexão!!
                     console.log("Conexão com o ID " + connection.threadId);
@@ -136,5 +135,25 @@ exports.update = (req, res) => {
             console.log("Os dados da tabela produtos: \n", rows);
         });
     });
+};
+
+//Excluindo produto
+exports.delete = (req, res) => {
+
+    pool.getConnection((err, connection) => {
+    if (err) throw err; //Sem conexão!!
+    console.log("Conexão com o ID " + connection.threadId);
+    
+    connection.query('DELETE FROM produtos WHERE id = ?', [req.params.id], (err, rows) => {
+       
+        connection.release();
+        if (!err) {
+            res.redirect('/');
+        } else {
+            console.log(err);
+        }
+        console.log("Os dados da tabela produtos: \n", rows);
+    });
+});
 };
 
