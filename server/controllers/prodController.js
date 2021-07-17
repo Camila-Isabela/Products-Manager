@@ -21,7 +21,8 @@ exports.view = (req, res) => {
             //Quando terminar a conexão, libere-a
             connection.release();
             if (!err) {
-                res.render('home', { rows });
+                let removedProd = req.query.removed;
+                res.render('home', { rows, removedProd });
             } else {
                 console.log(err);
             }
@@ -168,7 +169,8 @@ exports.delete = (req, res) => {
         
             connection.release();
             if (!err) {
-                res.redirect('/');
+                let removedProd = encodeURIComponent('Produto removido com sucesso!');
+                res.redirect('/?removed=' + removedProd);
             } else {
                 console.log(err);
             }
