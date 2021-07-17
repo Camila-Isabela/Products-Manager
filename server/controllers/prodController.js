@@ -16,7 +16,7 @@ exports.view = (req, res) => {
         if (err) throw err; //Sem conexão!!
         console.log("Conexão com o ID " + connection.threadId);
         //Usando a conexão
-        //Opção para exibir apenas os ativos. Transformar em botão depois!!
+        //Opção para exibir apenas os ativos. 
         connection.query('SELECT * FROM produtos WHERE status = "ativo"', (err, rows) => {
             //Quando terminar a conexão, libere-a
             connection.release();
@@ -178,3 +178,23 @@ exports.delete = (req, res) => {
 
 };
 
+//Detalhe dos Produtos
+exports.viewall = (req, res) => {
+    //Conexão com o banco de dados
+    pool.getConnection((err, connection) => {
+        if (err) throw err; //Sem conexão!!
+        console.log("Conexão com o ID " + connection.threadId);
+        //Usando a conexão
+        //Opção para exibir apenas os ativos. 
+        connection.query('SELECT * FROM produtos WHERE id = ?', [req.params.id], (err, rows) => {
+            //Quando terminar a conexão, libere-a
+            connection.release();
+            if (!err) {
+                res.render('view-prod', { rows });
+            } else {
+                console.log(err);
+            }
+            console.log("Os dados da tabela produtos: \n", rows);
+        });
+    });
+};

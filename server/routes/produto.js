@@ -26,4 +26,7 @@ router.post('/editprod/:id', prodController.update);
 //Excluir
 router.get('/:id', prodController.delete);
 
+//Detalhar
+router.get('/viewprod/:id', prodController.viewall);
+
 module.exports = router;
