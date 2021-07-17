@@ -36,8 +36,8 @@ exports.find = (req, res) => {
         if (err) throw err; //Sem conexão!!
         console.log("Conexão com o ID " + connection.threadId);
         let searchTerm = req.body.search;
-        //Usando a conexão
-        connection.query("SELECT * FROM produtos WHERE cod_barra LIKE ? ",
+        //Na pesquisa, para exibir só os ativos, inserir AND status = 'ativo'
+        connection.query("SELECT * FROM produtos WHERE cod_barra LIKE ?  ",
             ["%" + searchTerm + "%"], (err, rows) => {
             connection.release();
             if (!err) {
@@ -140,6 +140,8 @@ exports.update = (req, res) => {
 //Excluindo produto
 exports.delete = (req, res) => {
 
+    //Excluir completamente do banco de dados
+
     //     pool.getConnection((err, connection) => {
     //     if (err) throw err; //Sem conexão!!
     //     console.log("Conexão com o ID " + connection.threadId);
@@ -156,11 +158,13 @@ exports.delete = (req, res) => {
     //     });
     // });
 
+    //Excluindo apenas do formulário e alterando o status para inativo
+
         pool.getConnection((err, connection) => {
         if (err) throw err; //Sem conexão!!
         console.log("Conexão com o ID " + connection.threadId);
         
-        connection.query('UPDATE produtos SET status = ? WHERE id = ?', ['inativo',req.params.id], (err, rows) => {
+        connection.query('UPDATE produtos SET status = ? WHERE id = ?', ['inativo', req.params.id], (err, rows) => {
         
             connection.release();
             if (!err) {
