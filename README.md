@@ -5,7 +5,7 @@
 <img src="views/images/logonode.png" width="100" height="75" style="border-radius:20%">&nbsp;&nbsp;&nbsp;
 <img src="views/images/logoxampp.png" width="100" height="75" style="border-radius:20%">&nbsp;&nbsp;&nbsp;
 
-- ### Instale as dependências
+### Instale as dependências
 
 ~~~~javascript
 npm install dotenv
@@ -25,7 +25,7 @@ npm install mysql
 
 ### Pronto!
 
-> agora é só abrir o [localhost](localhost:5000) na sua máquina
+> agora é só abrir o [localhost:5000](localhost:5000) na sua máquina
 
 # Preview do Gerenciador
 
