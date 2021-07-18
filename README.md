@@ -1,11 +1,11 @@
 # Projeto para gerenciar produtos
 
-- ### Requisitos
+### Requisitos
 
 <img src="views/images/logonode.png" width="100" height="75" style="border-radius:20%">&nbsp;&nbsp;&nbsp;
 <img src="views/images/logoxampp.png" width="100" height="75" style="border-radius:20%">&nbsp;&nbsp;&nbsp;
 
-### Instale as dependências
+### Instale as dependências do projeto
 
 ~~~~javascript
 npm install dotenv
