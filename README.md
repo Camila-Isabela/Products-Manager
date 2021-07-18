@@ -2,12 +2,12 @@
 
 ## Requisitos
 
-Ter o xampp e o node instalado na sua máquina
+<img src="views/images/logonode.png" width="100" height="75" style="border-radius:20%">&nbsp;&nbsp;&nbsp;
+<img src="views/images/logoxampp.png" width="100" height="75" style="border-radius:20%">
 
 ## Instale as dependências
 
 ~~~~javascript
-npm install body-parser
 npm install dotenv
 npm install express
 npm install express-handlebars

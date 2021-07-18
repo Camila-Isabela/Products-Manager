@@ -1,6 +1,5 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
-const bodyParser = require('body-parser');
 const mysql = require('mysql');
 
 require('dotenv').config();
@@ -38,6 +37,15 @@ pool.getConnection((err, connection) => {
 });
 
 
+//Aqui são as novas rotas
+const routes = require('./server/routes/produto');
+app.use('/', routes);
+
+app.listen(port, () => console.log(`Rodando na porta ${port}`));
+
+
+
+
 //Router
 //Isso era incialmente, agora vai ser substituído pelas rotas de acordo com as tabelas que eu criar
 //Dentro da pasta "server" vem "routes" e "controllers". é lá que ficam meus dados
@@ -46,9 +54,3 @@ pool.getConnection((err, connection) => {
 // app.get('', (req, res) => {
 //     res.render('home');
 // });
-
-//Aqui são as novas rotas
-const routes = require('./server/routes/produto');
-app.use('/', routes);
-
-app.listen(port, () => console.log(`Rodando na porta ${port}`));
