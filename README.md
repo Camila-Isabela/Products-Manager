@@ -19,7 +19,7 @@ npm install mysql
 <img src="views/images/logohbs.jpg" width="100" height="75" style="border-radius:20%">&nbsp;&nbsp;&nbsp;
 <img src="views/images/logomysql.png" width="100" height="75" style="border-radius:20%">&nbsp;&nbsp;&nbsp;
 
-### 2. Depois crie um banco de dados na sua máquina com o conteúdo do arquivo "tabela-produtos.sql"
+### Crie um banco de dados na sua máquina com o conteúdo do arquivo "tabela-produtos.sql"
 
 Pronto! agora é só abrir o [localhost](localhost:5000) na sua máquina.
 
