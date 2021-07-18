@@ -1,11 +1,12 @@
 # Projeto para gerenciar produtos
 
-## Requisitos
+### Requisitos
 
 <img src="views/images/logonode.png" width="100" height="75" style="border-radius:20%">&nbsp;&nbsp;&nbsp;
-<img src="views/images/logoxampp.png" width="100" height="75" style="border-radius:20%">
+<img src="views/images/logoxampp.png" width="100" height="75" style="border-radius:20%">&nbsp;&nbsp;&nbsp;
 
-## Instale as dependências
+
+### Instale as dependências
 
 ~~~~javascript
 npm install dotenv
@@ -14,11 +15,15 @@ npm install express-handlebars
 npm install mysql
 ~~~~
 
-## 2. Depois crie um banco de dados na sua máquina com o conteúdo
+<img src="views/images/logoenv.png" width="100" height="75" style="border-radius:20%">&nbsp;&nbsp;&nbsp;
+<img src="views/images/logoexpress.png" width="100" height="75" style="border-radius:20%">&nbsp;&nbsp;&nbsp;
+<img src="views/images/logohbs.jpg" width="100" height="75" style="border-radius:20%">&nbsp;&nbsp;&nbsp;
+<img src="views/images/logomysql.png" width="100" height="75" style="border-radius:20%">&nbsp;&nbsp;&nbsp;
 
-tabela-produtos.sql
+### 2. Depois crie um banco de dados na sua máquina com o conteúdo do arquivo "tabela-produtos.sql"
 
-## 2. Depois crie um banco de dados na sua máquina com o conteúdo
+Pronto! agora é só abrir o [localhost](localhost:5000) na sua máquina.
+# Preview do Gerenciador
 
 ![Screenshot](views/images/image1.png)
 
